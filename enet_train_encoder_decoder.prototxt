@@ -3859,56 +3859,70 @@ layer {
     param_str: "{\'phase\': \'TRAIN\', \'p\': \'0.1\'}"
   }
 }
-layer {
-  name: "conv4_0_4"
-  type: "Convolution"
-  bottom: "prelu3_8_4"
-  top: "conv4_0_4"
-  convolution_param {
-    num_output: 64
-    bias_term: false
-    kernel_size: 1
-    stride: 1
-    weight_filler {
-      type: "msra"
-    }
-  }
-}
-layer {
-  name: "bn4_0_4"
-  type: "BN"
-  bottom: "conv4_0_4"
-  top: "bn4_0_4"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 1
-    decay_mult: 0
-  }
-  bn_param {
-    scale_filler {
-      type: "constant"
-      value: 1
-    }
-    shift_filler {
-      type: "constant"
-      value: 0.001
-    }
-    bn_mode: LEARN
-  }
-}
+# layer {
+  # name: "conv4_0_4"
+  # type: "Convolution"
+  # bottom: "prelu3_8_4"
+  # top: "conv4_0_4"
+  # convolution_param {
+    # num_output: 64
+    # bias_term: false
+    # kernel_size: 1
+    # stride: 1
+    # weight_filler {
+      # type: "msra"
+    # }
+  # }
+# }
+# layer {
+  # name: "bn4_0_4"
+  # type: "BN"
+  # bottom: "conv4_0_4"
+  # top: "bn4_0_4"
+  # param {
+    # lr_mult: 1
+    # decay_mult: 1
+  # }
+  # param {
+    # lr_mult: 1
+    # decay_mult: 0
+  # }
+  # bn_param {
+    # scale_filler {
+      # type: "constant"
+      # value: 1
+    # }
+    # shift_filler {
+      # type: "constant"
+      # value: 0.001
+    # }
+    # bn_mode: LEARN
+  # }
+# }
+
 layer {
   name: "upsample4_0_4"
-  type: "Upsample"
-  bottom: "bn4_0_4"
-  bottom: "pool2_0_4_mask"
+  type: "Deconvolution"
+  bottom: "prelu3_8_4"
   top: "upsample4_0_4"
-  upsample_param {
-    scale: 2
+  convolution_param {
+    num_output: 64
+    bias_term: true
+    kernel_size: 2
+    stride: 2
   }
 }
+
+# layer {
+  # name: "upsample4_0_4"
+  # type: "Upsample"
+  # bottom: "bn4_0_4"
+  # bottom: "pool2_0_4_mask"
+  # top: "upsample4_0_4"
+  # upsample_param {
+    # scale: 2
+  # }
+# }
 layer {
   name: "eltwise4_0_4"
   type: "Eltwise"
@@ -4376,56 +4390,70 @@ layer {
     param_str: "{\'phase\': \'TRAIN\', \'p\': \'0.1\'}"
   }
 }
-layer {
-  name: "conv5_0_4"
-  type: "Convolution"
-  bottom: "prelu4_2_4"
-  top: "conv5_0_4"
-  convolution_param {
-    num_output: 16
-    bias_term: false
-    kernel_size: 1
-    stride: 1
-    weight_filler {
-      type: "msra"
-    }
-  }
-}
-layer {
-  name: "bn5_0_4"
-  type: "BN"
-  bottom: "conv5_0_4"
-  top: "bn5_0_4"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 1
-    decay_mult: 0
-  }
-  bn_param {
-    scale_filler {
-      type: "constant"
-      value: 1
-    }
-    shift_filler {
-      type: "constant"
-      value: 0.001
-    }
-    bn_mode: LEARN
-  }
-}
+# layer {
+  # name: "conv5_0_4"
+  # type: "Convolution"
+  # bottom: "prelu4_2_4"
+  # top: "conv5_0_4"
+  # convolution_param {
+    # num_output: 16
+    # bias_term: false
+    # kernel_size: 1
+    # stride: 1
+    # weight_filler {
+      # type: "msra"
+    # }
+  # }
+# }
+# layer {
+  # name: "bn5_0_4"
+  # type: "BN"
+  # bottom: "conv5_0_4"
+  # top: "bn5_0_4"
+  # param {
+    # lr_mult: 1
+    # decay_mult: 1
+  # }
+  # param {
+    # lr_mult: 1
+    # decay_mult: 0
+  # }
+  # bn_param {
+    # scale_filler {
+      # type: "constant"
+      # value: 1
+    # }
+    # shift_filler {
+      # type: "constant"
+      # value: 0.001
+    # }
+    # bn_mode: LEARN
+  # }
+# }
+
 layer {
   name: "upsample5_0_4"
-  type: "Upsample"
-  bottom: "bn5_0_4"
-  bottom: "pool1_0_4_mask"
+  type: "Deconvolution"
+  bottom: "prelu4_2_4"
   top: "upsample5_0_4"
-  upsample_param {
-    scale: 2
+  convolution_param {
+    num_output: 16
+    bias_term: true
+    kernel_size: 2
+    stride: 2
   }
 }
+
+# layer {
+  # name: "upsample5_0_4"
+  # type: "Upsample"
+  # bottom: "bn5_0_4"
+  # bottom: "pool1_0_4_mask"
+  # top: "upsample5_0_4"
+  # upsample_param {
+    # scale: 2
+  # }
+# }
 layer {
   name: "eltwise5_0_4"
   type: "Eltwise"

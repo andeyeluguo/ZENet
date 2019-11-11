@@ -3737,7 +3737,26 @@ layer {
   top: "loss"
   loss_param {
     ignore_label: 255
-    weight_by_label_freqs: false
+    weight_by_label_freqs: true
+    class_weighting: 0.0819 
+    class_weighting: 0.4754
+    class_weighting: 0.1324
+    class_weighting: 1.5224
+    class_weighting: 1.5190
+    class_weighting: 2.4730
+    class_weighting: 8.1865
+    class_weighting: 5.2286
+    class_weighting: 0.1870
+    class_weighting: 1.4695
+    class_weighting: 0.6893
+    class_weighting: 1.9814
+    class_weighting: 7.8091
+    class_weighting: 0.4164
+    class_weighting: 1.3809
+    class_weighting: 1.1982
+    class_weighting: 0.6273
+    class_weighting: 5.3535
+    class_weighting: 4.0939
   }
 }
 layer {

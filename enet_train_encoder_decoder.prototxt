@@ -230,7 +230,7 @@ layer {
   type: "Pooling"
   bottom: "prelu0_1"
   top: "pool1_0_4"
-  top: "pool1_0_4_mask"
+  #top: "pool1_0_4_mask"
   pooling_param {
     pool: MAX
     kernel_size: 2
@@ -1067,7 +1067,7 @@ layer {
   type: "Pooling"
   bottom: "prelu1_4_4"
   top: "pool2_0_4"
-  top: "pool2_0_4_mask"
+  #top: "pool2_0_4_mask"
   pooling_param {
     pool: MAX
     kernel_size: 2
